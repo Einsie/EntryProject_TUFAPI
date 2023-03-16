@@ -20,7 +20,6 @@
 // Using statements necessary for function:
 using EntryProject_TUFAPI.Models;
 using EntryProject_TUFAPI.Models.DTO;
-using System.Text.Json;
 
 namespace EntryProject_TUFAPI.Data
 {
@@ -29,9 +28,8 @@ namespace EntryProject_TUFAPI.Data
         // create the TUFDTO object
         private TUFDTO _TUFDTO;
 
-        // accessor property for the TUFDTO which returns it as a string formatted into Json format
+        // accessor property for the TUFDTO
         public TUFDTO TUFDataJson { get { return _TUFDTO; } }
-        //public string TUFDataJson { get { return JsonSerializer.Serialize(_TUFDTO); } }
 
 
         // TUFStore constructor with parameter for TUF object

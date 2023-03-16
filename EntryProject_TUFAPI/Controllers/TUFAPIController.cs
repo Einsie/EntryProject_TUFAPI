@@ -18,7 +18,6 @@
 using Microsoft.AspNetCore.Mvc;
 using EntryProject_TUFAPI.Models;
 using EntryProject_TUFAPI.Data;
-using System.Text.Json;
 
 namespace EntryProject_TUFAPI.Controllers
 {
@@ -46,16 +45,16 @@ namespace EntryProject_TUFAPI.Controllers
             TUF newTUF = new TUF();    // create a new TUF object which will upon creation initiate the process and gain all necessary TUF data
             if(newTUF.TUFRegisterList.Count == 0)  // check if RegisterList successfully added any elements into its list or if elements inside it remain 0
             {
-                JsonResult failedToFindTUFData = new JsonResult("TUF Data not found");
-                failedToFindTUFData.StatusCode = StatusCodes.Status404NotFound;
+                JsonResult failedToFindTUFData = new JsonResult("TUF Data not found"); // create a jsonresult with information on reason for failure
+                failedToFindTUFData.StatusCode = StatusCodes.Status404NotFound; // set status code to 404 not found
                 return failedToFindTUFData; // return 404 not found code if no elements exist
             }
             else
             {
                 TUFStore newTUFSTORE = new TUFStore(newTUF); // create a new TUFStore object handling all the conversion and storing the object with relevant data, provide created TUF object in parameter
-                JsonResult TUFResult = new JsonResult(newTUFSTORE.TUFDataJson);
-                TUFResult.StatusCode = StatusCodes.Status200OK;
-                TUFResult.ContentType = "application/json";
+                JsonResult TUFResult = new JsonResult(newTUFSTORE.TUFDataJson); // create Jsonresult with the TUF data as its value
+                TUFResult.StatusCode = StatusCodes.Status200OK; // set statuscode for result as 200 OK
+                TUFResult.ContentType = "application/json"; // determine content to be json which will provide a .json file
                 return TUFResult;
                 //return new JsonResult(Ok(newTUFSTORE.TUFDataJson)); // return ok code along with the necessary list
             }
