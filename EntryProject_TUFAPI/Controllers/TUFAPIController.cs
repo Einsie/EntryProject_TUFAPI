@@ -20,7 +20,7 @@ using EntryProject_TUFAPI.Models;
 
 // Following using statements are in development:
 //using EntryProject_TUFAPI.Models.DTO;
-//using EntryProject_TUFAPI.Data;
+using EntryProject_TUFAPI.Data;
 
 namespace EntryProject_TUFAPI.Controllers
 {
@@ -43,17 +43,18 @@ namespace EntryProject_TUFAPI.Controllers
         [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public ActionResult<IEnumerable<TUF.registerDataStruct>> GetTUF()
+        public ActionResult<string> GetTUF()
         {
             TUF newTUF = new TUF();    // create a new TUF object which will upon creation initiate the process and gain all necessary TUF data
             if(newTUF.TUFRegisterList.Count == 0)  // check if RegisterList successfully added any elements into its list or if elements inside it remain 0
             {
                 return NotFound(); // return 404 not found code if no elements exist
             }
-            return Ok(newTUF.TUFRegisterList); // return ok code along with the nessary list
-
-            // Following is under development:
-            //return TUFStore._TUFList;
+            else
+            {
+                TUFStore newTUFSTORE = new TUFStore(newTUF);
+                return Ok(newTUFSTORE.TUFListJson); // return ok code along with the nessary list
+            }
         }
     }
 }

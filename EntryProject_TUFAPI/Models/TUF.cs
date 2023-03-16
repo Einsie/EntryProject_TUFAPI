@@ -25,17 +25,17 @@ namespace EntryProject_TUFAPI.Models
     public class TUF
     {
         // create local class variables
-        private List<registerDataStruct> _TUFRegister;
+        private List<UInt16> _TUFRegister;
         private string _date;
 
         // Class access properties for local variables for defining allowed use for them as only GET
         public string date { get {return _date ;} }
-        public List<registerDataStruct> TUFRegisterList { get {return _TUFRegister;} }
+        public List<UInt16> TUFRegisterList { get {return _TUFRegister;} }
 
         public TUF()
         {
             //initialise local class variables
-            _TUFRegister = new List<registerDataStruct>();
+            _TUFRegister = new List<UInt16>();
             _date = "";
 
             // call GetTUFData method to begin the process of data access and storage into class variables
@@ -85,13 +85,13 @@ namespace EntryProject_TUFAPI.Models
                     }
 
                     // parse the strings in idBuilder and bitIntegralBuilder and temporarily store them into idInt and bitIntegral respectively
-                    int idInt;
+                    //int idInt;
                     UInt16 bitIntegral;
-                    bool parseIdResult = int.TryParse(idBuilder.ToString(), out idInt);
+                    //bool parseIdResult = int.TryParse(idBuilder.ToString(), out idInt);
                     bool parseValueResult = UInt16.TryParse(bitIntegralBuilder.ToString(), out bitIntegral);
 
                     // add a new registerDataStruct into the internal _TUFRegister list with parsed data values
-                    _TUFRegister.Add(new registerDataStruct(idInt, bitIntegral));
+                    _TUFRegister.Add(bitIntegral);
                 }
             }
         }
