@@ -5,15 +5,15 @@
  * into human readable format by the API and sent to user in JSON format.
  * 
  * 
- * Class description: This class handles the receival of all necessary data from Gambit's
+ * Class description: TUF class handles the receival of all necessary data from Gambit's
  * text file hosted online, parses and compiles this data into date and list of id and value pairs in
  * local variables. These can then be accessed through accessor properties by other parts of API.
  * Created: 13.03.2023
  * 
  * 
  * Developer: Albert Kristian Rantala
- * Last edit: 15.03.2023
- * notes: 
+ * Last edit: 16.03.2023
+ * Notes: 
  */
 
 // Using statements necessary for function:
@@ -28,15 +28,17 @@ namespace EntryProject_TUFAPI.Models
         private List<UInt16> _TUFRegister;
         private string _date;
 
-        // Class access properties for local variables for defining allowed use for them as only GET
+        // Class accessor properties for local variables for defining allowed use for them as only GET
         public string date { get {return _date ;} }
         public List<UInt16> TUFRegisterList { get {return _TUFRegister;} }
 
+
+        // Constructor for TUF class
         public TUF()
         {
             //initialise local class variables
             _TUFRegister = new List<UInt16>();
-            _date = "";
+            _date = String.Empty;
 
             // call GetTUFData method to begin the process of data access and storage into class variables
             GetTUFData();
@@ -63,31 +65,24 @@ namespace EntryProject_TUFAPI.Models
                 {
 
                     string streamRLine = streamR.ReadLine(); // go through the next line with Streamreader in text file and store it into temporary string called streamRLine
-                    StringBuilder idBuilder = new StringBuilder(); // a stringbuilder object for separating ID from StreamRLine
                     StringBuilder bitIntegralBuilder = new StringBuilder(); // a stringbuilder object for sperating the integral value of 16 bits into its own string from StreamRLine
-                    bool isDigitID = true;  // Boolean for confirming if current character in string is still part of ID or not, in text file ID and Value separated by ':' symbol we're looking for
+                    bool isDigitBitIntegral = false;  // Boolean for confirming if current character in string is now part of 16bit integral value, in text file ID and Value separated by ':' symbol which we're looking for
 
                     // foreach loop for going through every individual character stored in streamRLine and determine if the char is a digit or not, if not, set isDigitID to false
                     foreach (char c in streamRLine)
                     {
-                        if (char.IsDigit(c) && isDigitID)
+                        if (isDigitBitIntegral && char.IsDigit(c))
                         {
-                            idBuilder.Append(c); // add current character being tested into idBuilder object
+                            bitIntegralBuilder.Append(c); // when isDigitBitIntegral is true and current character is a digit, add current character being tested into bitIntegralBuilder Object
                         }
-                        else if (char.IsDigit(c))
+                        else if (!char.IsDigit(c))
                         {
-                            bitIntegralBuilder.Append(c); // when isDigitID is false, add current character being tested into bitIntegralBuilder Object
-                        }
-                        else 
-                        { 
-                            isDigitID = false; // the ':' symbol separating id and values was found, thus isDigitID is set to false for future foreach loops
+                            isDigitBitIntegral = true; // the ':' symbol separating id and values was found, thus isDigitBitIntegral is set to false for future foreach loops
                         }
                     }
 
-                    // parse the strings in idBuilder and bitIntegralBuilder and temporarily store them into idInt and bitIntegral respectively
-                    //int idInt;
+                    // parse the strings in bitIntegralBuilder and temporarily store it into bitIntegral
                     UInt16 bitIntegral;
-                    //bool parseIdResult = int.TryParse(idBuilder.ToString(), out idInt);
                     bool parseValueResult = UInt16.TryParse(bitIntegralBuilder.ToString(), out bitIntegral);
 
                     // add a new registerDataStruct into the internal _TUFRegister list with parsed data values
@@ -95,12 +90,5 @@ namespace EntryProject_TUFAPI.Models
                 }
             }
         }
-
-
-        // RegisterDataStruct: structure used for storing relevant information into ID and the 16bit IntegralValue pairs
-        public record struct registerDataStruct(
-            int id,
-            UInt16 bitIntegralValue
-        );
     }
 }

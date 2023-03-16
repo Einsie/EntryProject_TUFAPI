@@ -5,21 +5,22 @@
  * into human readable format by the API and sent to user in JSON format.
  * 
  * 
- * Class description: 
+ * Class description: TUFDTO class is created for storing all the converted data before json serialization is done upon the class to turn it into appropriate string format
  * Created: 13.03.2023
  * 
  * 
  * Developer: Albert Kristian Rantala
- * Last edit: 15.03.2023
- * notes: 
+ * Last edit: 16.03.2023
+ * Notes: 
  */
 
-using System.Collections;
+
 
 namespace EntryProject_TUFAPI.Models.DTO
 {
     public class TUFDTO
     {
+        // Define all TUF data as properties with appropriate data type
         public string? Date { get; set; }
         public float FlowRate { get; set; }
         public float EnergyFlowRate { get; set; }
@@ -46,6 +47,10 @@ namespace EntryProject_TUFAPI.Models.DTO
         public float CurrentInputAtAI3_2 { get; set; }
         public float CurrentInputAtAI3_3 { get; set; }
 
+        public string SystemPassword { get; set; }
+        public string PasswordForHardware { get; set; }
+        public string CalendarDateAndTime { get; set; }
+        public string DayAndHourForAutoSave { get; set; }
 
 
         public Int16 KeyToInput { get; set; }
@@ -61,27 +66,11 @@ namespace EntryProject_TUFAPI.Models.DTO
         public float UpstreamTravelTime { get; set; }
         public float DownstreamTravelTime { get; set; }
         public float OutputCurrent { get; set; }
-        public Int16 WorkingStepAndSignQuality { get; set; }
+        public string? WorkingStepAndSignQuality { get; set; }
         public Int16 UpstreamStrength { get; set; }
         public Int16 DownstreamStrength { get; set; }
         public Int16 LanguageUsedInUserInterface { get; set; }
         public float TheRateOfTheMeasuredTravelTimeByTheCalculatedTravelTime { get; set; }
         public float ReynoldsNumber { get; set; }
-
-
-
-        //public record struct Real4DataStruct(
-        //    string name,
-        //    float BitIntegralValue
-        //);
-        //public record struct LongDataStruct(
-        //    int id,
-        //    ushort bitIntegralValue
-        //);
-        //public record struct BCDDataStruct(
-        //    int id,
-        //    ushort bitIntegralValue
-        //);
-
     }
 }

@@ -5,21 +5,18 @@
  * into human readable format by the API and sent to user in JSON format.
  * 
  * 
- * Class description: This class receives and controls the handling of request and their return to user
+ * Class description: TUFAPIController class receives and controls the handling of request and their return to user
  * Created: 13.03.2023
  * 
  * 
  * Developer: Albert Kristian Rantala
- * Last edit: 15.03.2023
+ * Last edit: 16.03.2023
  * Notes: 
  */
 
 // Using statements necessary for function:
 using Microsoft.AspNetCore.Mvc;
 using EntryProject_TUFAPI.Models;
-
-// Following using statements are in development:
-//using EntryProject_TUFAPI.Models.DTO;
 using EntryProject_TUFAPI.Data;
 
 namespace EntryProject_TUFAPI.Controllers
@@ -31,12 +28,12 @@ namespace EntryProject_TUFAPI.Controllers
 
         /* Method: GETTUF
          * Description: The primary GET request sent to the API that will initiate the necessary tasks of
-         * gaining information from device and return this back to the user with 200 OK response if everything
+         * gaining information from device and return this back to the user in converted string format with 200 OK response if everything
          * worked or with 404 not found if TUF no data was found from server
          * 
          * HTTPGet: define the type of the method as GET request and provide the possible response types produced
          * ProducesResponseType: document possible returned response codes
-         * return: this method returns an action result code along with an IEnumerable list consisting of the TUF's Register values
+         * return: this method returns an action result code along with a Json serialized string variable consisting of the converted TUF data
          * 
          * Notes:
          */
@@ -52,8 +49,8 @@ namespace EntryProject_TUFAPI.Controllers
             }
             else
             {
-                TUFStore newTUFSTORE = new TUFStore(newTUF);
-                return Ok(newTUFSTORE.TUFListJson); // return ok code along with the nessary list
+                TUFStore newTUFSTORE = new TUFStore(newTUF); // create a new TUFStore object handling all the conversion and storing the object with relevant data, provide created TUF object in parameter
+                return Ok(newTUFSTORE.TUFDataJson); // return ok code along with the necessary list
             }
         }
     }
