@@ -30,7 +30,8 @@ namespace EntryProject_TUFAPI.Data
         private TUFDTO _TUFDTO;
 
         // accessor property for the TUFDTO which returns it as a string formatted into Json format
-        public string TUFDataJson { get { return JsonSerializer.Serialize(_TUFDTO); } }
+        public TUFDTO TUFDataJson { get { return _TUFDTO; } }
+        //public string TUFDataJson { get { return JsonSerializer.Serialize(_TUFDTO); } }
 
 
         // TUFStore constructor with parameter for TUF object
@@ -50,64 +51,64 @@ namespace EntryProject_TUFAPI.Data
          */
         private void TUFDataConversion(TUF TUFData)
         {
-            _TUFDTO.Date = TUFData.date;
-            _TUFDTO.FlowRate = BitConverter.ToSingle(Byte16ToByte32Conversion(TUFData.TUFRegisterList[0], TUFData.TUFRegisterList[1]));
-            _TUFDTO.EnergyFlowRate = BitConverter.ToSingle(Byte16ToByte32Conversion(TUFData.TUFRegisterList[2], TUFData.TUFRegisterList[3]));
-            _TUFDTO.Velocity = BitConverter.ToSingle(Byte16ToByte32Conversion(TUFData.TUFRegisterList[4], TUFData.TUFRegisterList[5]));
-            _TUFDTO.FluidSoundSpeed = BitConverter.ToSingle(Byte16ToByte32Conversion(TUFData.TUFRegisterList[6], TUFData.TUFRegisterList[7]));
-            _TUFDTO.PositiveAccumulator = BitConverter.ToInt32(Byte16ToByte32Conversion(TUFData.TUFRegisterList[8], TUFData.TUFRegisterList[9]));
-            _TUFDTO.PositiveDecimalFraction = BitConverter.ToSingle(Byte16ToByte32Conversion(TUFData.TUFRegisterList[10], TUFData.TUFRegisterList[11]));
-            _TUFDTO.NegativeAccumulator = BitConverter.ToInt32(Byte16ToByte32Conversion(TUFData.TUFRegisterList[12], TUFData.TUFRegisterList[13]));
-            _TUFDTO.NegativeDecimalFraction = BitConverter.ToSingle(Byte16ToByte32Conversion(TUFData.TUFRegisterList[14], TUFData.TUFRegisterList[15]));
-            _TUFDTO.PositiveEnergyAccumulator = BitConverter.ToInt32(Byte16ToByte32Conversion(TUFData.TUFRegisterList[16], TUFData.TUFRegisterList[17]));
-            _TUFDTO.PositiveEnergyDecimalFraction = BitConverter.ToSingle(Byte16ToByte32Conversion(TUFData.TUFRegisterList[18], TUFData.TUFRegisterList[19]));
-            _TUFDTO.NegativeEnergyAccumulator = BitConverter.ToInt32(Byte16ToByte32Conversion(TUFData.TUFRegisterList[20], TUFData.TUFRegisterList[21]));
-            _TUFDTO.NegativeEnergyDecimalFraction = BitConverter.ToSingle(Byte16ToByte32Conversion(TUFData.TUFRegisterList[22], TUFData.TUFRegisterList[23]));
-            _TUFDTO.NetAccumulator = BitConverter.ToInt32(Byte16ToByte32Conversion(TUFData.TUFRegisterList[24], TUFData.TUFRegisterList[25]));
-            _TUFDTO.NetDecimalFraction = BitConverter.ToSingle(Byte16ToByte32Conversion(TUFData.TUFRegisterList[26], TUFData.TUFRegisterList[27]));
-            _TUFDTO.NetEnergyAccumulator = BitConverter.ToInt32(Byte16ToByte32Conversion(TUFData.TUFRegisterList[28], TUFData.TUFRegisterList[29]));
-            _TUFDTO.NetEnergyDecimalFraction = BitConverter.ToSingle(Byte16ToByte32Conversion(TUFData.TUFRegisterList[30], TUFData.TUFRegisterList[31]));
-            _TUFDTO.Temperature1Inlet = BitConverter.ToSingle(Byte16ToByte32Conversion(TUFData.TUFRegisterList[32], TUFData.TUFRegisterList[33]));
-            _TUFDTO.Temperature2Outlet = BitConverter.ToSingle(Byte16ToByte32Conversion(TUFData.TUFRegisterList[34], TUFData.TUFRegisterList[35]));
-            _TUFDTO.AnalogInputAI3 = BitConverter.ToSingle(Byte16ToByte32Conversion(TUFData.TUFRegisterList[36], TUFData.TUFRegisterList[37]));
-            _TUFDTO.AnalogInputAI4 = BitConverter.ToSingle(Byte16ToByte32Conversion(TUFData.TUFRegisterList[38], TUFData.TUFRegisterList[39]));
-            _TUFDTO.AnalogInputAI5 = BitConverter.ToSingle(Byte16ToByte32Conversion(TUFData.TUFRegisterList[40], TUFData.TUFRegisterList[41]));
-            _TUFDTO.CurrentInputAtAI3_1 = BitConverter.ToSingle(Byte16ToByte32Conversion(TUFData.TUFRegisterList[42], TUFData.TUFRegisterList[43]));
-            _TUFDTO.CurrentInputAtAI3_2 = BitConverter.ToSingle(Byte16ToByte32Conversion(TUFData.TUFRegisterList[44], TUFData.TUFRegisterList[45]));
-            _TUFDTO.CurrentInputAtAI3_3 = BitConverter.ToSingle(Byte16ToByte32Conversion(TUFData.TUFRegisterList[46], TUFData.TUFRegisterList[47]));
+            _TUFDTO.date = TUFData.date;
+            _TUFDTO.flowRate = BitConverter.ToSingle(Byte16ToByte32Conversion(TUFData.TUFRegisterList[0], TUFData.TUFRegisterList[1]));
+            _TUFDTO.energyFlowRate = BitConverter.ToSingle(Byte16ToByte32Conversion(TUFData.TUFRegisterList[2], TUFData.TUFRegisterList[3]));
+            _TUFDTO.velocity = BitConverter.ToSingle(Byte16ToByte32Conversion(TUFData.TUFRegisterList[4], TUFData.TUFRegisterList[5]));
+            _TUFDTO.fluidSoundSpeed = BitConverter.ToSingle(Byte16ToByte32Conversion(TUFData.TUFRegisterList[6], TUFData.TUFRegisterList[7]));
+            _TUFDTO.positiveAccumulator = BitConverter.ToInt32(Byte16ToByte32Conversion(TUFData.TUFRegisterList[8], TUFData.TUFRegisterList[9]));
+            _TUFDTO.positiveDecimalFraction = BitConverter.ToSingle(Byte16ToByte32Conversion(TUFData.TUFRegisterList[10], TUFData.TUFRegisterList[11]));
+            _TUFDTO.negativeAccumulator = BitConverter.ToInt32(Byte16ToByte32Conversion(TUFData.TUFRegisterList[12], TUFData.TUFRegisterList[13]));
+            _TUFDTO.negativeDecimalFraction = BitConverter.ToSingle(Byte16ToByte32Conversion(TUFData.TUFRegisterList[14], TUFData.TUFRegisterList[15]));
+            _TUFDTO.positiveEnergyAccumulator = BitConverter.ToInt32(Byte16ToByte32Conversion(TUFData.TUFRegisterList[16], TUFData.TUFRegisterList[17]));
+            _TUFDTO.positiveEnergyDecimalFraction = BitConverter.ToSingle(Byte16ToByte32Conversion(TUFData.TUFRegisterList[18], TUFData.TUFRegisterList[19]));
+            _TUFDTO.negativeEnergyAccumulator = BitConverter.ToInt32(Byte16ToByte32Conversion(TUFData.TUFRegisterList[20], TUFData.TUFRegisterList[21]));
+            _TUFDTO.negativeEnergyDecimalFraction = BitConverter.ToSingle(Byte16ToByte32Conversion(TUFData.TUFRegisterList[22], TUFData.TUFRegisterList[23]));
+            _TUFDTO.netAccumulator = BitConverter.ToInt32(Byte16ToByte32Conversion(TUFData.TUFRegisterList[24], TUFData.TUFRegisterList[25]));
+            _TUFDTO.netDecimalFraction = BitConverter.ToSingle(Byte16ToByte32Conversion(TUFData.TUFRegisterList[26], TUFData.TUFRegisterList[27]));
+            _TUFDTO.netEnergyAccumulator = BitConverter.ToInt32(Byte16ToByte32Conversion(TUFData.TUFRegisterList[28], TUFData.TUFRegisterList[29]));
+            _TUFDTO.netEnergyDecimalFraction = BitConverter.ToSingle(Byte16ToByte32Conversion(TUFData.TUFRegisterList[30], TUFData.TUFRegisterList[31]));
+            _TUFDTO.temperature1Inlet = BitConverter.ToSingle(Byte16ToByte32Conversion(TUFData.TUFRegisterList[32], TUFData.TUFRegisterList[33]));
+            _TUFDTO.temperature2Outlet = BitConverter.ToSingle(Byte16ToByte32Conversion(TUFData.TUFRegisterList[34], TUFData.TUFRegisterList[35]));
+            _TUFDTO.analogInputAI3 = BitConverter.ToSingle(Byte16ToByte32Conversion(TUFData.TUFRegisterList[36], TUFData.TUFRegisterList[37]));
+            _TUFDTO.analogInputAI4 = BitConverter.ToSingle(Byte16ToByte32Conversion(TUFData.TUFRegisterList[38], TUFData.TUFRegisterList[39]));
+            _TUFDTO.analogInputAI5 = BitConverter.ToSingle(Byte16ToByte32Conversion(TUFData.TUFRegisterList[40], TUFData.TUFRegisterList[41]));
+            _TUFDTO.currentInputAtAI3_1 = BitConverter.ToSingle(Byte16ToByte32Conversion(TUFData.TUFRegisterList[42], TUFData.TUFRegisterList[43]));
+            _TUFDTO.currentInputAtAI3_2 = BitConverter.ToSingle(Byte16ToByte32Conversion(TUFData.TUFRegisterList[44], TUFData.TUFRegisterList[45]));
+            _TUFDTO.currentInputAtAI3_3 = BitConverter.ToSingle(Byte16ToByte32Conversion(TUFData.TUFRegisterList[46], TUFData.TUFRegisterList[47]));
 
 
-            _TUFDTO.SystemPassword = BCDConversion(Byte16ToByte32Conversion(TUFData.TUFRegisterList[48], TUFData.TUFRegisterList[49]));
-            _TUFDTO.PasswordForHardware = BCDConversion(Byte16Conversion(TUFData.TUFRegisterList[50]));
-            _TUFDTO.CalendarDateAndTime = BCDConversion(Byte16ToByte48Conversion(TUFData.TUFRegisterList[52], TUFData.TUFRegisterList[53], TUFData.TUFRegisterList[54]));
-            _TUFDTO.DayAndHourForAutoSave = BCDConversion(Byte16Conversion(TUFData.TUFRegisterList[55]));
+            _TUFDTO.systemPassword = BCDConversion(Byte16ToByte32Conversion(TUFData.TUFRegisterList[48], TUFData.TUFRegisterList[49]));
+            _TUFDTO.passwordForHardware = BCDConversion(Byte16Conversion(TUFData.TUFRegisterList[50]));
+            _TUFDTO.calendarDateAndTime = BCDConversion(Byte16ToByte48Conversion(TUFData.TUFRegisterList[52], TUFData.TUFRegisterList[53], TUFData.TUFRegisterList[54]));
+            _TUFDTO.dayAndHourForAutoSave = BCDConversion(Byte16Conversion(TUFData.TUFRegisterList[55]));
 
-            _TUFDTO.KeyToInput = BitConverter.ToInt16(Byte16Conversion(TUFData.TUFRegisterList[58]));
-            _TUFDTO.GoToWindow = BitConverter.ToInt16(Byte16Conversion(TUFData.TUFRegisterList[59]));
-            _TUFDTO.LCDBacklitLightsForNumberOfSeconds = BitConverter.ToInt16(Byte16Conversion(TUFData.TUFRegisterList[60]));
-            _TUFDTO.TimesForBeeper = BitConverter.ToInt16(Byte16Conversion(TUFData.TUFRegisterList[61]));
-            _TUFDTO.PulsesLeftForOCT = BitConverter.ToInt16(Byte16Conversion(TUFData.TUFRegisterList[61]));
+            _TUFDTO.keyToInput = BitConverter.ToInt16(Byte16Conversion(TUFData.TUFRegisterList[58]));
+            _TUFDTO.goToWindow = BitConverter.ToInt16(Byte16Conversion(TUFData.TUFRegisterList[59]));
+            _TUFDTO.lcdBacklitLightsForNumberOfSeconds = BitConverter.ToInt16(Byte16Conversion(TUFData.TUFRegisterList[60]));
+            _TUFDTO.timesForBeeper = BitConverter.ToInt16(Byte16Conversion(TUFData.TUFRegisterList[61]));
+            _TUFDTO.pulsesLeftForOCT = BitConverter.ToInt16(Byte16Conversion(TUFData.TUFRegisterList[61]));
 
             // Errorcode requires all 16 bits displayed in string as each bit being on signifies a different error code being returned, check TUF Manual page 44 note (4)
-            _TUFDTO.ErrorCode = Convert.ToString(Byte16Conversion(TUFData.TUFRegisterList[71])[0], 2).PadLeft(8, '0') + "" + Convert.ToString(Byte16Conversion(TUFData.TUFRegisterList[71])[1], 2).PadLeft(8, '0');
+            _TUFDTO.errorCode = Convert.ToString(Byte16Conversion(TUFData.TUFRegisterList[71])[0], 2).PadLeft(8, '0') + "" + Convert.ToString(Byte16Conversion(TUFData.TUFRegisterList[71])[1], 2).PadLeft(8, '0');
 
-            _TUFDTO.PT100ResistanceOfInlet = BitConverter.ToSingle(Byte16ToByte32Conversion(TUFData.TUFRegisterList[76], TUFData.TUFRegisterList[77]));
-            _TUFDTO.PT100ResistanceOfOutlet = BitConverter.ToSingle(Byte16ToByte32Conversion(TUFData.TUFRegisterList[78], TUFData.TUFRegisterList[79]));
-            _TUFDTO.TotalTravelTime = BitConverter.ToSingle(Byte16ToByte32Conversion(TUFData.TUFRegisterList[80], TUFData.TUFRegisterList[81]));
-            _TUFDTO.DeltaTravelTime = BitConverter.ToSingle(Byte16ToByte32Conversion(TUFData.TUFRegisterList[82], TUFData.TUFRegisterList[83]));
-            _TUFDTO.UpstreamTravelTime = BitConverter.ToSingle(Byte16ToByte32Conversion(TUFData.TUFRegisterList[84], TUFData.TUFRegisterList[85]));
-            _TUFDTO.DownstreamTravelTime = BitConverter.ToSingle(Byte16ToByte32Conversion(TUFData.TUFRegisterList[86], TUFData.TUFRegisterList[87]));
-            _TUFDTO.OutputCurrent = BitConverter.ToSingle(Byte16ToByte32Conversion(TUFData.TUFRegisterList[88], TUFData.TUFRegisterList[89]));
+            _TUFDTO.pt100ResistanceOfInlet = BitConverter.ToSingle(Byte16ToByte32Conversion(TUFData.TUFRegisterList[76], TUFData.TUFRegisterList[77]));
+            _TUFDTO.pt100ResistanceOfOutlet = BitConverter.ToSingle(Byte16ToByte32Conversion(TUFData.TUFRegisterList[78], TUFData.TUFRegisterList[79]));
+            _TUFDTO.totalTravelTime = BitConverter.ToSingle(Byte16ToByte32Conversion(TUFData.TUFRegisterList[80], TUFData.TUFRegisterList[81]));
+            _TUFDTO.deltaTravelTime = BitConverter.ToSingle(Byte16ToByte32Conversion(TUFData.TUFRegisterList[82], TUFData.TUFRegisterList[83]));
+            _TUFDTO.upstreamTravelTime = BitConverter.ToSingle(Byte16ToByte32Conversion(TUFData.TUFRegisterList[84], TUFData.TUFRegisterList[85]));
+            _TUFDTO.downstreamTravelTime = BitConverter.ToSingle(Byte16ToByte32Conversion(TUFData.TUFRegisterList[86], TUFData.TUFRegisterList[87]));
+            _TUFDTO.outputCurrent = BitConverter.ToSingle(Byte16ToByte32Conversion(TUFData.TUFRegisterList[88], TUFData.TUFRegisterList[89]));
 
             // Each byte of WorkingStepAndSignQuality value has to be displayed separately as their own values 
-            _TUFDTO.WorkingStepAndSignQuality = int.Parse(Convert.ToString(Byte16Conversion(TUFData.TUFRegisterList[91])[0]), System.Globalization.NumberStyles.HexNumber) + " " + int.Parse(Convert.ToString(Byte16Conversion(TUFData.TUFRegisterList[91])[1]), System.Globalization.NumberStyles.HexNumber);
+            _TUFDTO.workingStepAndSignQuality = int.Parse(Convert.ToString(Byte16Conversion(TUFData.TUFRegisterList[91])[0]), System.Globalization.NumberStyles.HexNumber) + " " + int.Parse(Convert.ToString(Byte16Conversion(TUFData.TUFRegisterList[91])[1]), System.Globalization.NumberStyles.HexNumber);
 
-            _TUFDTO.UpstreamStrength = BitConverter.ToInt16(Byte16Conversion(TUFData.TUFRegisterList[92]));
-            _TUFDTO.DownstreamStrength = BitConverter.ToInt16(Byte16Conversion(TUFData.TUFRegisterList[93]));
-            _TUFDTO.LanguageUsedInUserInterface = BitConverter.ToInt16(Byte16Conversion(TUFData.TUFRegisterList[95]));
+            _TUFDTO.upstreamStrength = BitConverter.ToInt16(Byte16Conversion(TUFData.TUFRegisterList[92]));
+            _TUFDTO.downstreamStrength = BitConverter.ToInt16(Byte16Conversion(TUFData.TUFRegisterList[93]));
+            _TUFDTO.languageUsedInUserInterface = BitConverter.ToInt16(Byte16Conversion(TUFData.TUFRegisterList[95]));
 
-            _TUFDTO.TheRateOfTheMeasuredTravelTimeByTheCalculatedTravelTime = BitConverter.ToSingle(Byte16ToByte32Conversion(TUFData.TUFRegisterList[96], TUFData.TUFRegisterList[97]));
-            _TUFDTO.ReynoldsNumber = BitConverter.ToSingle(Byte16ToByte32Conversion(TUFData.TUFRegisterList[98], TUFData.TUFRegisterList[99]));
+            _TUFDTO.theRateOfTheMeasuredTravelTimeByTheCalculatedTravelTime = BitConverter.ToSingle(Byte16ToByte32Conversion(TUFData.TUFRegisterList[96], TUFData.TUFRegisterList[97]));
+            _TUFDTO.reynoldsNumber = BitConverter.ToSingle(Byte16ToByte32Conversion(TUFData.TUFRegisterList[98], TUFData.TUFRegisterList[99]));
         }
 
 
