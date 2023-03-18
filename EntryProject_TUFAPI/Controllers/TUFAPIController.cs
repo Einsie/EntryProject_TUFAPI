@@ -22,6 +22,8 @@ using Microsoft.AspNetCore.Cors;
 
 namespace EntryProject_TUFAPI.Controllers
 {
+
+    [EnableCors("_myAllowOrigins")]
     [Route("/")]       //Definining the route the API shall use
     [ApiController]     //Define the type of this class
     public class TUFAPIController : ControllerBase //this class derives itself from the ControllerBase class
@@ -38,7 +40,7 @@ namespace EntryProject_TUFAPI.Controllers
          * 
          * Notes:
          */
-        [EnableCors]
+        
         [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(JsonResult))]
         [ProducesResponseType(StatusCodes.Status404NotFound, Type = typeof(JsonResult))]
