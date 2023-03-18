@@ -18,7 +18,8 @@ builder.Services.AddCors(options =>
     options.AddPolicy(MyAllowOrigins,
         policy =>
         {
-            policy.AllowAnyOrigin();
+            policy.AllowAnyOrigin()
+                    .AllowAnyHeader();
         });
 });
 builder.Services.AddControllers();
@@ -77,10 +78,7 @@ var app = builder.Build();
 app.UseSwagger();
 
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwaggerUI();
-}
+app.UseSwaggerUI();
 
 app.UseHttpsRedirection();
 

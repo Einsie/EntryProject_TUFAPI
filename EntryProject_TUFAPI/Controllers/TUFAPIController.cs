@@ -26,7 +26,7 @@ namespace EntryProject_TUFAPI.Controllers
 {
 
     [EnableCors("_myAllowOrigins")]
-    [Route("/")]       //Definining the route the API shall use
+    [Route("/api")]       //Definining the route the API shall use
     [ApiController]     //Define the type of this class
     public class TUFAPIController : ControllerBase //this class derives itself from the ControllerBase class
     {
