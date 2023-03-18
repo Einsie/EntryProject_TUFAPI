@@ -19,6 +19,8 @@ using Microsoft.AspNetCore.Mvc;
 using EntryProject_TUFAPI.Models;
 using EntryProject_TUFAPI.Data;
 using Microsoft.AspNetCore.Cors;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 
 namespace EntryProject_TUFAPI.Controllers
 {
@@ -42,7 +44,10 @@ namespace EntryProject_TUFAPI.Controllers
          */
         
         [HttpGet]
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme, Roles = "Administrator")]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(JsonResult))]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [ProducesResponseType(StatusCodes.Status403Forbidden)]
         [ProducesResponseType(StatusCodes.Status404NotFound, Type = typeof(JsonResult))]
         public JsonResult GetTUF()
         {
