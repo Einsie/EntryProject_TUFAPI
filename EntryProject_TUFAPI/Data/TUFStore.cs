@@ -39,12 +39,12 @@ namespace EntryProject_TUFAPI.Data
             TUFDataConversion(TUFData); // begin conversion with the received TUF object
         }
 
-        /* Method: TUFDataConversion
+        /* Method: TUFDataConversion(TUF TUFData)
          * Description: With received TUF object, initializes the class properties of _TUFDTO with values this class
          * converts using BitConverter and the three local class methods below 
          * Parameter: TUFData of type TUF which holds all the base register values necessary for conversion
          * 
-         * Notes: TUFDTO.ErrorCode property initialising partial credit goes to user Kelsey for their answer at https://stackoverflow.com/questions/3581674/converting-a-byte-to-a-binary-string-in-c-sharp
+         * Notes: TUFDTO.ErrorCode property initialising solution used based on answer from user Kelsey at https://stackoverflow.com/questions/3581674/converting-a-byte-to-a-binary-string-in-c-sharp
          * used for converting byte array element into string and still showing all 8 bits even if their values are 0 using .PadLeft(8, '0')
          */
         private void TUFDataConversion(TUF TUFData)
@@ -110,7 +110,7 @@ namespace EntryProject_TUFAPI.Data
         }
 
 
-        /* Method: Byte16ToByte32Conversion
+        /* Method: Byte16ToByte32Conversion(UInt16 firstRegisterValue, UInt16 secondRegisterValue)
          * Description: Converts two TUF register values into bytes and stores them in a byte array which it returns
          * Parameter: FirstRegisterValue of type UInt16 holding a 16bit integral register value
          * Parameter: secondRegisterValue of type UInt16 holding a 16bit integral register value
@@ -131,7 +131,7 @@ namespace EntryProject_TUFAPI.Data
         }
 
 
-        /* Method: Byte16Conversion
+        /* Method: Byte16Conversion(UInt16 registerValue)
          * Description: Converts one TUF register value into a byte and stores it in a byte array which it returns
          * Parameter: registerValue of type UInt16 holding a 16bit integral register value
          * return: returns a byte array with two element for the two bytes
@@ -143,7 +143,7 @@ namespace EntryProject_TUFAPI.Data
             return BitConverter.GetBytes(registerValue);
         }
 
-        /* Method: Byte16ToByte48Conversion
+        /* Method: Byte16ToByte48Conversion(UInt16 firstRegisterValue, UInt16 secondRegisterValue, UInt16 thirdRegisterValue)
          * Description: Converts three TUF register values into bytes and stores them in a byte array which it returns
          * Parameter: FirstRegisterValue of type UInt16 holding a 16bit integral register value
          * Parameter: secondRegisterValue of type UInt16 holding a 16bit integral register value
@@ -169,7 +169,7 @@ namespace EntryProject_TUFAPI.Data
 
 
 
-        /* Method: BCDConversion
+        /* Method: BCDConversion(byte[] inputBytes)
          * Description: This method is used for BCD format TUF data, it splits all bytes in the parameter array to 4 individual bits
          * and converts these back into decimals. These are then returned as a single unified string
          * Parameters: inputBytes of type byte array, this holds all bytes to be converted

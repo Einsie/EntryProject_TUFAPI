@@ -10,8 +10,9 @@
  * 
  * 
  * Developer: Albert Kristian Rantala
- * Last edit: 16.03.2023
- * Notes: 
+ * Last edit: 19.03.2023
+ * Notes: The initial core of this APIController and relevant structure classes built with the help of tutorial by
+ * DotNetMastery at https://www.youtube.com/watch?v=_uZYOgzYheU
  */
 
 // Using statements necessary for function:
@@ -24,25 +25,29 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 
 namespace EntryProject_TUFAPI.Controllers
 {
-
-    [EnableCors("_myAllowOrigins")]
+    // EnableCors attribute, can also be attached to specific method instead of the whole class.
+    // EnableCors is used to enable Cors support using the policy name in the string, this has been set in Program.cs
+    [EnableCors("_myAllowOrigins")] 
     [Route("/api")]       //Definining the route the API shall use
     [ApiController]     //Define the type of this class
     public class TUFAPIController : ControllerBase //this class derives itself from the ControllerBase class
     {
 
-        /* Method: GETTUF
+        /* Method: GETTUF()
          * Description: The primary GET request sent to the API that will initiate the necessary tasks of
          * gaining information from device and return this back to the user in converted string format with 200 OK response if everything
          * worked or with 404 not found if TUF no data was found from server
          * 
-         * HTTPGet: define the type of the method as GET request and provide the possible response types produced
+         * HttpGet: define the type of the method as GET request and provide the possible response types produced
+         * Authorize: Attribute that declares this method requires successful authorization key for it to return desired data.
+         * Authentication scheme used by Authorize is using JwtBearer to hold the key received in header of the HttpGet request,
+         * and for authorization to pass the received key has to follow rules stated in Program.cs of validity as well as hold the role of
+         * an Administrator.
          * ProducesResponseType: document possible returned response codes
          * return: this method returns an action result code along with a Json serialized string variable consisting of the converted TUF data
          * 
          * Notes:
          */
-        
         [HttpGet]
         [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme, Roles = "Administrator")]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(JsonResult))]

@@ -45,7 +45,7 @@ namespace EntryProject_TUFAPI.Models
         }
 
 
-        /* Method: GetTUFData
+        /* Method: GetTUFData()
          * Description: Internal method which creates an access to the Gambit's online text file containing
          * TUF data registers, then parses this information into usable values for later conversion
          * and stores these into appropriate class variables
