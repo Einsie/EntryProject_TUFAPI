@@ -9,7 +9,7 @@ and returned back to the user as in a json format, with authentication included.
 
 
 <p>For now this project has been deployed to Azure at: https://entryprojecttufapi.azurewebsites.net/swagger/index.html</p>
-<p>To test this, you can go to the above link, hit login tab and try it out on the right. Then in the opened up request body text box,
+<p>To test this, you can go to the above azurewebsites link, hit login tab and try it out on the right. Then in the opened up request body text box,
 change the "string" for username to either "albert_admin" or "johndoe_standard". Both will work to return a key, but only albert_admin has
 authorization access to get result from TUFAPI's get request. The password string for both is the same: "MyTempPa55_W0rd". Once you have entered
 these, hit execute and you will receive a response with the key. copy that key for yourself without the "" symbols on each end.</p>
